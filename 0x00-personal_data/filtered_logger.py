@@ -11,8 +11,9 @@ from typing import List
 def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     """"Redacting Formatter class"""
-    pattern = r'({}=)[^{}}]*'.format('|'.join(fields), separator)
-    return re.sub(pattern, lambda m: m.group(1) + redaction, message)
+    for f in fields:
+        message = re.sub(f'{f}=[^{separator}]*', f'{f}={redaction}', message)
+    return message
 
 
 class RedactingFormatter(logging.Formatter):
