@@ -10,8 +10,5 @@ def filter_datum(fields, redaction, message, separator):
     """
     Obfuscates sensitive information in a log message.
     """
-    return re.sub(
-        r'(?<=({})=)[^{}]+'.format('|'.join(fields), separator),
-        redaction,
-        message
-    )
+    pattern = r'(?<=({})=)[^{}]+'.format('|'.join(fields), separator)
+    return re.sub(pattern, redaction, message)
