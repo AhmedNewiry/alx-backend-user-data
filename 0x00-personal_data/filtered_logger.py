@@ -7,6 +7,11 @@ import re
 import logging
 from typing import List
 
+# Define PII_FIELDS with fields considered sensitive
+PII_FIELDS: Tuple[str, ...] = (
+    'password', 'email', 'ssn', 'address', 'phone_number'
+)
+
 
 def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
