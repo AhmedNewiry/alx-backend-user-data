@@ -5,12 +5,10 @@ This module provides utilities for logging and handling personal data.
 
 import re
 import logging
-from typing import List, Tuple
+from typing import List
 
 # Define PII_FIELDS with fields considered sensitive
-PII_FIELDS: Tuple[str, ...] = (
-    'password', 'email', 'ssn', 'address', 'phone_number'
-)
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
 def filter_datum(fields: List[str], redaction: str, message: str,
