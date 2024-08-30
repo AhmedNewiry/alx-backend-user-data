@@ -51,6 +51,7 @@ def get_logger() -> logging.Logger:
 
     return logger
 
+
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """Connects to the MySQL database and returns the connection object."""
     # Retrieve database credentials from environment variables
