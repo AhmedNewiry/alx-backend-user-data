@@ -5,6 +5,7 @@ This module provides utilities for password encryption.
 
 import bcrypt
 
+
 def hash_password(password: str) -> bytes:
     """Hash a password with a salt using bcrypt."""
     # Generate a salt
