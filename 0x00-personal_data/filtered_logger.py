@@ -5,7 +5,7 @@ This module provides utilities for logging and handling personal data.
 
 import re
 import logging
-from typing import List
+from typing import List, Tuple
 
 # Define PII_FIELDS with fields considered sensitive
 PII_FIELDS: Tuple[str, ...] = (
