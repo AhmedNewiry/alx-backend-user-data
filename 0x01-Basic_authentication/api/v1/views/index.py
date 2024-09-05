@@ -35,7 +35,11 @@ def unauthorized():
     abort(401)
 
 
-@index_blueprint.route('/forbidden', methods=['GET']), strict_slashes=False)
+@index_blueprint.route(
+        '/api/v1/forbidden',
+        methods=['GET'],
+        strict_slashes=False
+)
 def forbidden():
     """Endpoint to trigger a 403 Forbidden error"""
     abort(403)
