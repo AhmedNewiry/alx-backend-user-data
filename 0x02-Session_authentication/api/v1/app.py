@@ -25,20 +25,23 @@ else:
     if auth_type == 'auth':
         auth = Auth()
 
+
 @app.before_request
 def before_request():
     """Function to run before each request."""
     if auth is None:
         return
     request.current_user = auth.current_user(request)
-    excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
-    
+    excluded_paths = [
+            '/api/v1/status/',
+            '/api/v1/unauthorized/',
+            '/api/v1/forbidden/'
+    ]
     # Check if the path requires authentication
     if auth.require_auth(request.path, excluded_paths):
         # Check for the authorization header
         if auth.authorization_header(request) is None:
             abort(401, description="Unauthorized")
-        
         # Check for the current user
         if auth.current_user(request) is None:
             abort(403, description="Forbidden")
