@@ -14,7 +14,16 @@ class Auth:
         Determine if authentication is required for the given path.
         Always returns False in this template.
         """
-        return False
+        if path is None:
+            return True
+        if not excluded_paths:
+            return True
+        normalized_path = path if path.endswith('/') else path + '/'
+        # Check if the normalized path is in the excluded_paths list
+        for excluded_path in excluded_paths:
+            if normalized_path.startswith(excluded_path):
+                return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """
