@@ -3,7 +3,7 @@
 
 from flask import request
 from typing import List, TypeVar
-
+import os
 
 User = TypeVar('User')
 
@@ -42,3 +42,24 @@ class Auth:
         Always returns None in this template.
         """
         return None
+
+
+    def session_cookie(self, request=None):
+        """
+        Returns the value of the session cookie from a request.
+
+        Args:
+            request: The incoming HTTP request object.
+
+        Returns:
+            The value of the cookie named by the environment variable
+            SESSION_NAME or None if not present.
+        """
+        if request is None:
+            return None
+
+        session_name = os.getenv('SESSION_NAME')
+        if session_name is None:
+            return None
+
+        return request.cookies.get(session_name)
