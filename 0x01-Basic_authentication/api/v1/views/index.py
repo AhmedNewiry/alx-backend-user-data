@@ -36,7 +36,7 @@ def unauthorized():
 
 
 @app_views.route(
-        '/api/v1/forbidden',
+        '/forbidden',
         methods=['GET'],
         strict_slashes=False
 )
