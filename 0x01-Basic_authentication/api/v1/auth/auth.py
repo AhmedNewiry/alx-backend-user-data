@@ -30,7 +30,11 @@ class Auth:
         Get the authorization header from the request.
         Always returns None in this template.
         """
-        return None
+        if request is None:
+            return None
+        
+        return request.headers.get('Authorization')
+
 
     def current_user(self, request=None) -> User:
         """
