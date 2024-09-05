@@ -35,7 +35,7 @@ def unauthorized():
     abort(401)
 
 
-@index_blueprint.route(
+@app_views.route(
         '/api/v1/forbidden',
         methods=['GET'],
         strict_slashes=False
