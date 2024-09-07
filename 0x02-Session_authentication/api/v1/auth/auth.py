@@ -10,10 +10,7 @@ User = TypeVar('User')
 
 class Auth:
     """
-    Auth class for managing authentication operations.
-    This class contains methods to determine whether authentication is required
-    for specific paths, handle authorization headers, retrieve session cookies,
-    and manage user sessions.
+    Auth class
     """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
