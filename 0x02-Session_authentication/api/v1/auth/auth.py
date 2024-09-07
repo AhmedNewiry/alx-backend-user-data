@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Authentication Management Module"""
+"""Authentication Management Module DonDocDoc DocDocDoc"""
 
 from flask import request
 from typing import List, TypeVar
