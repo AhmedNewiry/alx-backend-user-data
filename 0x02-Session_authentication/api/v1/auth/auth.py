@@ -9,6 +9,7 @@ User = TypeVar('User')
 
 
 class Auth:
+    """a class for authentication mangement"""
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Determine if authentication is required for the given path.
@@ -32,9 +33,7 @@ class Auth:
         """
         if request is None:
             return None
-        
         return request.headers.get('Authorization')
-
 
     def current_user(self, request=None) -> User:
         """
@@ -42,7 +41,6 @@ class Auth:
         Always returns None in this template.
         """
         return None
-
 
     def session_cookie(self, request=None):
         """
