@@ -17,12 +17,7 @@ class Auth:
     Methods:
     - require_auth(path: str, excluded_paths: List[str]) -> bool
     : Determines if authentication is required for the given path.
-    - authorization_header(request=None) -> str: Retrieves the
-    authorization header from the request.
-    - current_user(request=None) -> User: Retrieves the current
-    user from the request.
-    - session_cookie(request=None) -> str: Retrieves
-    the session cookie value from the request.
+    - authorization_header(request=None) -> str: Retrieve
     """
     
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
