@@ -28,13 +28,6 @@ class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Determine if authentication is required for the given path.
-
-        Args:
-            path (str): The path to check.
-            excluded_paths (List[str]): List of paths that do not require authentication.
-
-        Returns:
-            bool: True if authentication is required, False otherwise.
         """
         if path is None:
             return True
@@ -50,12 +43,6 @@ class Auth:
     def authorization_header(self, request=None) -> str:
         """
         Get the authorization header from the request.
-
-        Args:
-            request (flask.Request, optional): The request object.
-
-        Returns:
-            str: The value of the authorization header, or None if the request is None.
         """
         if request is None:
             return None
@@ -64,24 +51,12 @@ class Auth:
     def current_user(self, request=None) -> User:
         """
         Get the current user from the request.
-
-        Args:
-            request (flask.Request, optional): The request object.
-
-        Returns:
-            User: The current user, or None if not available.
         """
         return None
 
     def session_cookie(self, request=None):
         """
         Returns the value of the session cookie from a request.
-
-        Args:
-            request (flask.Request, optional): The request object.
-
-        Returns:
-            str: The session cookie value, or None if the session name is not set or the request is None.
         """
         if request is None:
             return None
