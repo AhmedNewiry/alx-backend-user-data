@@ -9,6 +9,7 @@ User = TypeVar('User')
 
 
 class Auth:
+    """Auth clas"""
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Determine if authentication is required for the given path.
