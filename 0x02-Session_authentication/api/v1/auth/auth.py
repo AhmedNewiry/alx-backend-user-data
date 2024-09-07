@@ -1,32 +1,7 @@
 #!/usr/bin/env python3
 """
-authentication_management.py
-
-This module provides functionality for managing authentication in a Flask application.
-
-It includes the following main components:
-- Auth: A class for handling authentication-related operations, such as determining if authentication is required, retrieving authorization headers, and managing session cookies.
-
-Example usage:
-    # Example code demonstrating how to use the Auth class
-    auth = Auth()
-    auth.require_auth('/path/to/resource', ['/excluded/path'])
-    header = auth.authorization_header(request)
-    user = auth.current_user(request)
-    session = auth.session_cookie(request)
-
-Classes:
-- Auth: Provides methods for authentication management, including path authorization, header retrieval, and session cookie handling.
-
-Methods:
-- require_auth(path: str, excluded_paths: List[str]) -> bool: Determines if authentication is required for the given path.
-- authorization_header(request=None) -> str: Retrieves the authorization header from the request.
-- current_user(request=None) -> User: Retrieves the current user from the request.
-- session_cookie(request=None) -> str: Retrieves the session cookie value from the request. Returns None if the session name is not set or if the request is None.
-
-Notes:
-- Ensure that 'SESSION_NAME' is set in the environment variables for session management.
-
+This module provides functionality for managing
+authentication in a Flask application.
 """
 
 from flask import request
@@ -39,12 +14,15 @@ User = TypeVar('User')
 class Auth:
     """
     A class for handling authentication-related operations.
-
     Methods:
-    - require_auth(path: str, excluded_paths: List[str]) -> bool: Determines if authentication is required for the given path.
-    - authorization_header(request=None) -> str: Retrieves the authorization header from the request.
-    - current_user(request=None) -> User: Retrieves the current user from the request.
-    - session_cookie(request=None) -> str: Retrieves the session cookie value from the request.
+    - require_auth(path: str, excluded_paths: List[str]) -> bool
+    : Determines if authentication is required for the given path.
+    - authorization_header(request=None) -> str: Retrieves the
+    authorization header from the request.
+    - current_user(request=None) -> User: Retrieves the current
+    user from the request.
+    - session_cookie(request=None) -> str: Retrieves
+    the session cookie value from the request.
     """
     
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
