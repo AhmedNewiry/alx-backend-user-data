@@ -4,6 +4,7 @@
 from typing import TypeVar
 from api.v1.auth.auth import Auth
 from models.user import User
+import base64
 
 
 class BasicAuth(Auth):
@@ -41,7 +42,7 @@ class BasicAuth(Auth):
         if not isinstance(base64_authorization_header, str):
             return None
         try:
-            decoded_bytes = b64decode(base64_authorization_header, validate=True)
+            decoded_bytes = base64.b64decode(base64_authorization_header, validate=True)
             return decoded_bytes.decode('utf-8')
         except (TypeError, base64.binascii.Error):
             return None
