@@ -15,7 +15,6 @@ class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Determine if authentication is required for the given path.
-        Always returns False in this template.
         """
         if path is None:
             return True
@@ -31,7 +30,6 @@ class Auth:
     def authorization_header(self, request=None) -> str:
         """
         Get the authorization header from the request.
-        Always returns None in this template.
         """
         if request is None:
             return None
@@ -40,20 +38,12 @@ class Auth:
     def current_user(self, request=None) -> User:
         """
         Get the current user from the request.
-        Always returns None in this template.
         """
         return None
 
     def session_cookie(self, request=None):
         """
         Returns the value of the session cookie from a request.
-
-        Args:
-            request: The incoming HTTP request object.
-
-        Returns:
-            The value of the cookie named by the environment variable
-            SESSION_NAME or None if not present.
         """
         if request is None:
             return None
