@@ -2,12 +2,22 @@
 """
 Auth module to handle user authentication and registration.
 """
-
+import uuid
 from db import DB
 from user import User
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
+
+
+def _generate_uuid() -> str:
+    """
+    Generate a new UUID and return it as a string.
+
+    Returns:
+        str: The string representation of the generated UUID.
+    """
+    return str(uuid.uuid4())
 
 
 def _hash_password(password: str) -> bytes:
