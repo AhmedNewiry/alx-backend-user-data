@@ -6,6 +6,7 @@ Auth module to handle user authentication and registration.
 from db import DB
 from user import User
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
 
 
