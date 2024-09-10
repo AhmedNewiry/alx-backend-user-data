@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """
-Flask app module to handle requests.
+Flask app module to handle user registration.
 """
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from auth import Auth
+
+# Instantiate the Auth object
+AUTH = Auth()
 
 # Initialize Flask app
 app = Flask(__name__)
-
-# Define route for "/"
 
 
 @app.route("/", methods=["GET"])
@@ -44,4 +46,4 @@ def register_user():
 
 # Run the Flask app
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="0.0.0.0", port=5000)
