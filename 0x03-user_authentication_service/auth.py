@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Authentication module for handling password hashing.
+Auth module for handling user registration and authentication.
+
+This module defines the Auth class, which provides functionality for
+registering users and interacting with the authentication database.
 """
+
 from db import DB
 from user import User
-from bcrypt import hashpw
-from auth import _hash_password
 import bcrypt
 
 
@@ -19,10 +21,10 @@ def _hash_password(password: str) -> bytes:
     Returns:
         bytes: The salted hash of the password.
     """
-    # Generate a salt and hash the password
     salt = bcrypt.gensalt()
     hashed_password = bcrypt.hashpw(password.encode(), salt)
     return hashed_password
+
 
 class Auth:
     """Auth class to interact with the authentication database."""
