@@ -8,9 +8,11 @@ from user import User
 from sqlalchemy.exc import IntegrityError
 import bcrypt
 
+
 def _hash_password(password: str) -> bytes:
     """
-    Hash the given password using bcrypt and return the hashed password as bytes.
+    Hash the given password using bcrypt and
+    return the hashed password as bytes.
 
     Args:
         password (str): The password to hash.
