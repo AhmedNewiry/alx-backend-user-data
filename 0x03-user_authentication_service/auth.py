@@ -9,6 +9,7 @@ registering users and interacting with the authentication database.
 from db import DB
 from user import User
 import bcrypt
+from sqlalchemy.exc import NoResultFound  # Import NoResultFound
 
 
 def _hash_password(password: str) -> bytes:
