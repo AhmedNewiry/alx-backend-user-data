@@ -78,6 +78,23 @@ def logout():
         abort(403)
 
 
+@app.route('/profile', methods=['GET'], strict_slashes=False)
+def profile():
+    """Profile route that returns the user's email if the session is valid."""
+    # Get session_id from cookies
+    session_id = request.cookies.get('session_id')
+
+    # Find user by session_id
+    user = AUTH.get_user_from_session_id(session_id)
+
+    if user:
+        # If user is found, return the user's email
+        return jsonify({"email": user.email}), 200
+    else:
+        # If session_id is invalid or user does not exist, return 403
+        abort(403)
+
+
 # Run the Flask app
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
