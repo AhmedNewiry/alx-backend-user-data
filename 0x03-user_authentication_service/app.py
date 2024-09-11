@@ -39,7 +39,7 @@ def users():
         return jsonify({"message": str(e)}), 400
 
 
-@app.route('/sessions', methods=['POST'], strict_slashes=False)
+@app.route('/sessions', methods=['POST'])
 def login():
     """Handle POST requests to /sessions for user login"""
     email = request.form.get('email')
@@ -60,7 +60,7 @@ def login():
         abort(401, description="Invalid login credentials")
 
 
-@app.route('/sessions', methods=['DELETE'])
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
     """Logout route that destroys the user session if it exists."""
     # Get session_id from cookies
