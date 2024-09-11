@@ -21,7 +21,7 @@ def welcome():
     return jsonify({"message": "Bienvenue"})
 
 
-@app.route('/users', methods=['POST'])
+@app.route('/users', methods=['POST'], strict_slashes=False)
 def users():
     """
     Endpoint to register a new user.
@@ -39,7 +39,7 @@ def users():
         return jsonify({"message": str(e)}), 400
 
 
-@app.route('/sessions', methods=['POST'])
+@app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login():
     """Handle POST requests to /sessions for user login"""
     email = request.form.get('email')
