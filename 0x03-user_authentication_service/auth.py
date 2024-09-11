@@ -119,6 +119,6 @@ class Auth:
         try:
             # Find user by session_id
             user = self._db.find_user_by(session_id=session_id)
-            return user
+            return user.email
         except NoResultFound:
             return None
