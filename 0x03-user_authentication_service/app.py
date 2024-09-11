@@ -24,19 +24,18 @@ def welcome():
 @app.route('/users', methods=['POST'], strict_slashes=False)
 def users():
     """
-    Endpoint to register a new user.
+    POST /users route to register a new user.
+    Expects two form fields: 'email' and 'password'.
     """
+    # Get email and password from the form data
     email = request.form.get('email')
     password = request.form.get('password')
-
-    if not email or not password:
-        return jsonify({"message": "email and password are required"}), 400
-
     try:
-        user = AUTH.register_user(email, password)
-        return jsonify({"email": user.email, "message": "user created"}), 201
-    except ValueError as e:
-        return jsonify({"message": str(e)}), 400
+        # Register the user using Auth
+        AUTH.register_user(email, password)
+        return jsonify({"email": email, "message": "user created"}), 200
+    except ValueError:
+        return jsonify({"message": "email already registered"}), 400
 
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
