@@ -93,6 +93,20 @@ def profile():
         # If session_id is invalid or user does not exist, return 403
         abort(403)
 
+@app.route('/reset_password', methods=['POST'], strict_slashes=False)
+def get_reset_password_token():
+    """
+    POST /reset_password route to get a reset password token.
+    """
+    email = request.form.get('email')
+    if not email:
+        abort(403)
+    try:
+        reset_token = AUTH.get_reset_password_token(email)
+    except ValueError:
+        abort(403)
+    return jsonify({"email": email, "reset_token": reset_token}), 200
+
 
 # Run the Flask app
 if __name__ == "__main__":
