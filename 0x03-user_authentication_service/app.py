@@ -3,7 +3,7 @@
 Flask app module to handle user registration.
 """
 
-from flask import Flask, jsonify, request, abort, make_response
+from flask import Flask, jsonify, request, abort, make_response, redirect
 from auth import Auth
 
 # Instantiate the Auth object
@@ -58,6 +58,24 @@ def login():
         return response
     else:
         abort(401, description="Invalid login credentials")
+
+
+@app.route('/sessions', methods=['DELETE'])
+def logout():
+    """Logout route that destroys the user session if it exists."""
+    # Get session_id from cookies
+    session_id = request.cookies.get('session_id')
+
+    # Find user by session_id
+    user = AUTH.get_user_from_session_id(session_id)
+
+    if user:
+        # If user exists, destroy session and redirect to /
+        AUTH.destroy_session(user.id)
+        return redirect('/')
+    else:
+        # If no user is found, return 403 Forbidden
+        abort(403)
 
 
 # Run the Flask app
