@@ -8,6 +8,7 @@ from user import User
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
+from typing import Optional
 
 
 def _generate_uuid() -> str:
